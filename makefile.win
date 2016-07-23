@@ -1,0 +1,39 @@
+CC=cl /DANSI
+
+InStruct: InStruct.obj data_interface.obj mcmc.obj initial.obj check_converg.obj result_analysis.obj random.obj quantile.obj nrutil.obj DPMM.obj poly_geno.obj
+	$(CC)  /DeInStruct.exe InStruct.obj data_interface.obj mcmc.obj initial.obj check_converg.obj result_analysis.obj quantile.obj random.obj nrutil.obj DPMM.obj poly_geno.obj
+
+InStruct.obj: InStruct.c data_interface.h mcmc.h random.h initial.h check_converg.h result_analysis.h quantile.h nrutil.h  poly_geno.h
+	$(CC)  /c InStruct.c
+
+data_interface.obj: data_interface.c data_interface.h nrutil.h
+	$(CC)  /c data_interface.c
+
+mcmc.obj: mcmc.c mcmc.h data_interface.h random.h initial.h nrutil.h DPMM.h poly_geno.h
+	$(CC)  /c mcmc.c
+
+poly_geno.obj: poly_geno.c poly_geno.h mcmc.h data_interface.h random.h initial.h nrutil.h
+	$(CC) /c poly_geno.c
+	
+DPMM.obj: DPMM.c DPMM.h random.h nrutil.h
+	$(CC)  /c DPMM.c
+	
+initial.obj: initial.c initial.h random.h nrutil.h
+	$(CC)  /c initial.c
+
+result_analysis.obj: result_analysis.c result_analysis.h data_interface.h mcmc.h initial.h quantile.h nrutil.h
+	$(CC)  /c result_analysis.c
+
+check_converg.obj: check_converg.c check_converg.h mcmc.h initial.h data_interface.h nrutil.h
+	$(CC)  /c check_converg.c
+
+quantile.obj: quantile.c quantile.h nrutil.h
+	$(CC)  /c quantile.c
+
+random.obj: random.c random.h nrutil.h
+	$(CC)  /c random.c
+	
+nrutil.obj: nrutil.c nrutil.h
+	$(CC)  /c nrutil.c
+
+
