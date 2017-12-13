@@ -1,3 +1,4 @@
+```
 This application estimates the selfing rates for subpopulations and
  classfies each individual into subpopulations given the sequence data.
  
@@ -216,7 +217,4 @@ In file random.c:
 	rbinom() :Generates from a binomial (N,p) distribution
 	bnldev() :
 	disc_unif() :generate the integer that represent the interval where a uniform random value falls
-
-
-
-
+```
